@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reservas de Mesa</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-utensils"></i> Sistema de Reservas</h1>
+            <p>Gerencie reservas de mesas do restaurante</p>
+        </header>
+
+        <main>
+            <div class="app-container">
+            
+                <div class="control-panel">
+                    <button id="btnInicializar" class="btn">
+                        <i class="fas fa-database"></i> Inicializar Dados
+                    </button>
+                    <button id="btnAtualizarStatus" class="btn">
+                        <i class="fas fa-sync-alt"></i> Atualizar Status
+                    </button>
+                    <button id="btnNovaReserva" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Nova Reserva
+                    </button>
+                </div>
+
+                <section class="mapa-mesas">
+                    <h2><i class="fas fa-map"></i> Mapa das Mesas</h2>
+                    <div class="legenda">
+                        <div class="legenda-item">
+                            <span class="status-dot disponivel"></span> Disponível
+                        </div>
+                        <div class="legenda-item">
+                            <span class="status-dot reservado"></span> Reservado
+                        </div>
+                        <div class="legenda-item">
+                            <span class="status-dot ocupado"></span> Ocupado
+                        </div>
+                        <div class="legenda-item">
+                            <span class="status-dot finalizado"></span> Finalizado
+                        </div>
+                    </div>
+                    <div id="mesasContainer" class="mesas-grid">
+                    
+                    </div>
+                </section>
+
+                <section id="formReserva" class="form-container" style="display: none;">
+                    <h2><i class="fas fa-calendar-plus"></i> Nova Reserva</h2>
+                    <form id="reservaForm">
+                        <div class="form-group">
+                            <label for="nomeCliente">Nome do Cliente</label>
+                            <input type="text" id="nomeCliente" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contatoCliente">Contato</label>
+                            <input type="text" id="contatoCliente" placeholder="(11) 99999-9999" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="numeroMesa">Número da Mesa</label>
+                            <select id="numeroMesa" required>
+                                <option value="">Selecione uma mesa</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="quantidadePessoas">Quantidade de Pessoas</label>
+                            <input type="number" id="quantidadePessoas" min="1" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="dataHora">Data e Hora</label>
+                            <input type="datetime-local" id="dataHora" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="observacoes">Observações (opcional)</label>
+                            <textarea id="observacoes" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-buttons">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-check"></i> Confirmar Reserva
+                            </button>
+                            <button type="button" id="btnCancelarForm" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> Cancelar
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="lista-reservas">
+                    <h2><i class="fas fa-list"></i> Reservas Ativas</h2>
+                    <div class="filtros">
+                        <input type="text" id="filtroCliente" placeholder="Filtrar por cliente">
+                        <select id="filtroStatus">
+                            <option value="">Todos os status</option>
+                            <option value="reservado">Reservado</option>
+                            <option value="ocupado">Ocupado</option>
+                            <option value="finalizado">Finalizado</option>
+                            <option value="cancelado">Cancelado</option>
+                        </select>
+                        <button id="btnAplicarFiltro" class="btn">
+                            <i class="fas fa-filter"></i> Filtrar
+                        </button>
+                    </div>
+                    <div id="reservasContainer">
+                    
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <p>Prova 3 - Desenvolvimento Web III | Fatec - Sistema de Reservas de Mesa</p>
+        </footer>
+    </div>
+
+    <div id="modalMesa" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="modalTitulo"></h3>
+            <div id="modalCorpo"></div>
+            <div class="modal-buttons" id="modalBotoes"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
